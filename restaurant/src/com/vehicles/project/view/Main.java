@@ -34,7 +34,7 @@ public class Main {
         String brand = askCarBrand();
         String plate = askCarPlate();
         String color = askCarColor();
-        return new Controller().createVehicle(type, brand, plate, color);
+        return new Controller().createRestaurant(type, brand, plate, color);
     }
 
 
