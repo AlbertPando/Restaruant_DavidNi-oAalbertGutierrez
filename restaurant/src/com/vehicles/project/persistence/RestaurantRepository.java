@@ -9,12 +9,12 @@ public class RestaurantRepository {
 
     private static List<Restaurant> restaurant = new ArrayList<>();
 
-    public Vehicle findVehicleByPlate(String plate) {
-        return vehicles.stream().filter(x -> x.getPlate().equals(plate)).findAny().get();
+    public Restaurant findRestaurantById(int id) {
+        return restaurant.stream().filter(x -> x.getId() == id).findAny().get();
     }
 
     public void addRestaurant(Restaurant restaurant) {
-        restaurant.add(restaurant);
+        this.restaurant.add(restaurant);
     }
 
 }
