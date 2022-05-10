@@ -14,6 +14,9 @@ public class Controller {
         return restaurant.getId();
     }
 
+    public int addPeopleInRestaurant(int id, int numPeople){
+    }
+
 //    public String createVehicle(int type, String brand, String plate, String color) throws Exception {
 //        Vehicle vehicle = new VehicleFactory().createVehicle(type, brand, plate, color);
 //        new RestaurantRepository().addRestaurant(res);

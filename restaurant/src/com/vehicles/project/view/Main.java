@@ -4,75 +4,34 @@ package com.vehicles.project.view;
 import Keyboard.Keyboard;
 import com.vehicles.project.application.Controller;
 import com.vehicles.project.utilities.ConstantsUtilities;
+import java.lang.String;
+
 
 public class Main {
 
     public static void main(String[] args) {
-        try {
-            String plate = createVehicle();
-            addWheelsToVehicle(plate);
-            paintVehicle(plate);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+            int restaurantId = createRestaurant();
+            addPeople(restaurantId);
     }
 
-    private static void paintVehicle(String plate) {
-        String color = askCarColor();
-        new Controller().paintVehicle(plate, color);
+    private static int createRestaurant() throws Exception {
+
+        String nameRestaurant = askRestaurantName();
+        return new Controller().createRestaurant(nameRestaurant, 24);
     }
 
-    private static void addWheelsToVehicle(String plate) throws Exception {
-        String brandWheel = askBrandWheel();
-        Double diameterWheel = askWheelDiameter();
-        new Controller().addWheels(plate, brandWheel, diameterWheel);
+    private static int addPeople(int id){
+        return new Controller().addPeopleInRestaurant(id,askNumPeople());
     }
 
-    private static String createVehicle() throws Exception {
-        int type = askVehicleType();
-        String brand = askCarBrand();
-        String plate = askCarPlate();
-        String color = askCarColor();
-        return new Controller().createRestaurant(type, brand, plate, color);
-    }
-
-
-    private static int askVehicleType() throws Exception {
-        System.out.println("Write the vehicle you want ('bike' , 'car' or 'tricicle'): ");
-        String option = Keyboard.readString();
-        if (option.equals("bike"))
-            return ConstantsUtilities.BIKE;
-        if (option.equals("car"))
-            return ConstantsUtilities.CAR;
-        if (option.equals("tricicle"))
-            return ConstantsUtilities.TRICICLE;
-        else
-            throw new Exception("The written text must be 'bike' or 'car'!");
-    }
-
-    private static String askBrandWheel() {
-        System.out.println("Write the wheel brand: ");
+    private static String askRestaurantName() {
+        System.out.println("Name of the restuarant: ");
         return Keyboard.readString();
     }
 
-    private static Double askWheelDiameter() {
-        System.out.println("Write the front wheel diameter: ");
-        return Keyboard.readDouble();
+    public static int askNumPeople() {
+        System.out.println("How many people for the reservation? ");
+        return Keyboard.readInt();
     }
 
-    private static String askCarPlate() {
-        System.out.println("Write the vehicle plate: ");
-        return Keyboard.readString();
-    }
-
-    public static String askCarBrand() {
-        System.out.println("Write the vehicle brand: ");
-        return Keyboard.readString();
-    }
-
-    public static String askCarColor() {
-        System.out.println("Write the vehicle color: ");
-        return Keyboard.readString();
-    }
 }
