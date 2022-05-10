@@ -1,11 +1,9 @@
 package com.vehicles.project.persistence;
 
-import com.vehicles.project.domain.Vehicle;
-
 import java.util.ArrayList;
 import java.util.List;
 
-public class VehicleRepository {
+public class RestaurantRepository {
 
     private static List<Vehicle> vehicles = new ArrayList<>();
 

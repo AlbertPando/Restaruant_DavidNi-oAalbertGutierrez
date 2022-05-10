@@ -1,7 +1,6 @@
 package com.vehicles.project.application;
 
-import com.vehicles.project.domain.*;
-import com.vehicles.project.persistence.VehicleRepository;
+import com.vehicles.project.persistence.RestaurantRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,12 +9,12 @@ public class Controller {
 
     public String createVehicle(int type, String brand, String plate, String color) throws Exception {
         Vehicle vehicle = new VehicleFactory().createVehicle(type, brand, plate, color);
-        new VehicleRepository().addVehicle(vehicle);
+        new RestaurantRepository().addVehicle(vehicle);
         return vehicle.getPlate();
     }
 
     public void addWheels(String plate, String brandWheel, double diameterWheel) throws Exception {
-        Vehicle vehicle = new VehicleRepository().findVehicleByPlate(plate);
+        Vehicle vehicle = new RestaurantRepository().findVehicleByPlate(plate);
 
         List<Wheel> frontWheels = createWheels(vehicle.getNumFrontWheels(), brandWheel, diameterWheel);
         List<Wheel> backWheels = createWheels(vehicle.getNumBackWheels(), brandWheel, diameterWheel);
@@ -33,7 +32,7 @@ public class Controller {
 
 
     public void paintVehicle(String plate, String color) {
-        Vehicle vehicle = new VehicleRepository().findVehicleByPlate(plate);
+        Vehicle vehicle = new RestaurantRepository().findVehicleByPlate(plate);
         vehicle.setColor(color);
     }
 

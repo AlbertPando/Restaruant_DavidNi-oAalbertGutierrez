@@ -1,9 +1,5 @@
 package com.vehicles.project.application;
 
-import com.vehicles.project.domain.Bike;
-import com.vehicles.project.domain.Car;
-import com.vehicles.project.domain.Tricicle;
-import com.vehicles.project.domain.Vehicle;
 import com.vehicles.project.utilities.ConstantsUtilities;
 
 public class VehicleFactory {
