@@ -1,6 +1,10 @@
 package com.vehicles.project.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Restaurant {
+    private List<Integer> tables;
     private static int counter;
     private int id;
     private String name;
@@ -12,6 +16,7 @@ public class Restaurant {
         this.id = this.counter;
         this.name = name;
         this.capacity = 0;
+        this.tables = new ArrayList<Integer>();
     }
 
     public int getId() {
@@ -30,7 +35,9 @@ public class Restaurant {
         if (this.capacity + numberOfPeople > this.MAX_CAPACITY)
             throw new Exception("No es pot afegir aquesta quantitat de gent, estem plens");
         this.capacity += numberOfPeople;
+        addPeopleGroup(numberOfPeople);
         return this.MAX_CAPACITY - this.capacity;
+
     }
 
     @Override
@@ -39,5 +46,17 @@ public class Restaurant {
         if (o == null || getClass() != o.getClass()) return false;
         Restaurant that = (Restaurant) o;
         return id == that.id;
+    }
+    public void addPeopleGroup(int numberOfPeople){
+       this.tables.add(numberOfPeople);
+
+        printAllGroups();
+    }
+    public void printAllGroups(){
+        for (Integer table:
+             this.tables) {
+            System.out.print();
+        }
+
     }
 }
