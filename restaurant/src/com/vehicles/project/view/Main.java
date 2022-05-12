@@ -19,8 +19,8 @@ public class Main {
         return new Controller().createRestaurant(nameRestaurant);
     }
 
-    private static int addPeople(int id){
-        return new Controller().addPeopleInRestaurant(id,askNumPeople());
+    private static void addPeople(int id) throws Exception{
+        new Controller().addPeopleInRestaurant(id,askNumPeople());
     }
 
     private static String askRestaurantName() {
