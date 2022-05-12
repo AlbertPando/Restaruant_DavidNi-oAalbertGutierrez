@@ -16,6 +16,7 @@ public class Controller {
 
     public void addPeopleInRestaurant(int id, int numPeople) throws Exception {
         Restaurant restaurant = new RestaurantRepository().findRestaurantById(id);
-        restaurant.addPeopleInRestaurant(numPeople);
+
+        System.out.println("Left " + restaurant.addPeopleInRestaurant(numPeople) + " people to add");
     }
 }
