@@ -4,12 +4,11 @@ package com.vehicles.project.view;
 import Keyboard.Keyboard;
 import com.vehicles.project.application.Controller;
 import com.vehicles.project.utilities.ConstantsUtilities;
-import java.lang.String;
 
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
             int restaurantId = createRestaurant();
             addPeople(restaurantId);
     }
