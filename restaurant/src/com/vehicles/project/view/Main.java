@@ -4,7 +4,6 @@ package com.vehicles.project.view;
 import Keyboard.Keyboard;
 import com.vehicles.project.application.Controller;
 import com.vehicles.project.utilities.ConstantsUtilities;
-import java.lang.String;
 
 
 public class Main {
