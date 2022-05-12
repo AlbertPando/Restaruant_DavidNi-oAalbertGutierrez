@@ -28,7 +28,7 @@ public class Restaurant {
 
     public int addPeopleInRestaurant(int numberOfPeople) throws Exception{
         if (this.capacity + numberOfPeople > this.MAX_CAPACITY)
-            throw new Exception("No es pot afegir aquesta quantitat de gent, estem plens");
+            throw new Exception("You can't add that many people, we're full");
         this.capacity += numberOfPeople;
         return this.MAX_CAPACITY - this.capacity;
     }
