@@ -17,7 +17,7 @@ public class Main {
     private static int createRestaurant() throws Exception {
 
         String nameRestaurant = askRestaurantName();
-        return new Controller().createRestaurant(nameRestaurant, 24);
+        return new Controller().createRestaurant(nameRestaurant);
     }
 
     private static int addPeople(int id){

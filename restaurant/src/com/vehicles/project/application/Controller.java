@@ -8,8 +8,8 @@ import java.util.List;
 
 public class Controller {
 
-    public int createRestaurant(String name, int capacity){
-        Restaurant restaurant = new Restaurant(name,capacity);
+    public int createRestaurant(String name){
+        Restaurant restaurant = new Restaurant(name);
         new RestaurantRepository().addRestaurant(restaurant);
         return restaurant.getId();
     }
