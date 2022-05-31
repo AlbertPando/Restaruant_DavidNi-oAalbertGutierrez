@@ -1,25 +1,25 @@
 package com.vehicles.project.domain;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.UUID;
 
 public class Restaurant {
-    private List<Integer> tables;
+    private Table[] tables;
     private static int counter;
-    private int id;
+    private String id;
     private String name;
     private int capacity;
     private final int MAX_CAPACITY = 24;
+    private final int MAX_CAPACITY_IN_TABLE = 6;
+    private final int MAX_TABLES = 4;
 
     public Restaurant(String name) {
-        this.counter += 1;
-        this.id = this.counter;
+        this.id = UUID.randomUUID().toString();
         this.name = name;
         this.capacity = 0;
-        this.tables = new ArrayList<Integer>();
+        this.tables = new Table[MAX_TABLES];
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
@@ -36,8 +36,8 @@ public class Restaurant {
             throw new Exception("You can't add that many people, we're full");
         this.capacity += numberOfPeople;
         addPeopleGroup(numberOfPeople);
+        printAllGroups();
         return this.MAX_CAPACITY - this.capacity;
-
     }
 
     @Override
@@ -47,16 +47,40 @@ public class Restaurant {
         Restaurant that = (Restaurant) o;
         return id == that.id;
     }
-    public void addPeopleGroup(int numberOfPeople){
-       this.tables.add(numberOfPeople);
-
-        printAllGroups();
-    }
-    public void printAllGroups(){
-        for (Integer table:
-             this.tables) {
-            System.out.print();
+    private void addPeopleGroup(int numberOfPeople) throws Exception {
+        int numOfTables, actualPeople, totalPeople = numberOfPeople;
+        if (totalPeople > MAX_CAPACITY_IN_TABLE){
+            numOfTables = (int) Math.ceil((double) totalPeople/MAX_CAPACITY_IN_TABLE);
+            System.out.println(totalPeople / MAX_CAPACITY_IN_TABLE);
         }
+        else
+            numOfTables = 1;
 
+        for (int i = 0; i < numOfTables; i++){
+            if (totalPeople > MAX_CAPACITY_IN_TABLE)
+                actualPeople = 6;
+            else
+                actualPeople = totalPeople;
+
+            putPeopleOnTables(actualPeople);
+
+            totalPeople -= actualPeople;
+        }
+    }
+
+
+    private void putPeopleOnTables(int numberOfPeople) throws Exception {
+        for (int i = 0; i < this.tables.length; i++){
+            if (this.tables[i] == null){
+                this.tables[i] = new Table(numberOfPeople);
+                return;
+            }
+        }
+        throw new Exception("There is no more tables free.");
+    }
+
+    public void printAllGroups(){
+        for (int i = 0; i < this.tables.length; i++)
+            System.out.println("Table " + (i + 1) + ": " + this.tables[i].getNumberOfPeople() + " people.");
     }
 }

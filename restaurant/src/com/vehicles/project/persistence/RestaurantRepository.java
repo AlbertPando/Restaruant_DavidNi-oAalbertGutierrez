@@ -9,7 +9,7 @@ public class RestaurantRepository {
 
     private static List<Restaurant> restaurant = new ArrayList<>();
 
-    public Restaurant findRestaurantById(int id) {
+    public Restaurant findRestaurantById(String id) {
         return restaurant.stream().filter(x -> x.getId() == id).findAny().get();
     }
 

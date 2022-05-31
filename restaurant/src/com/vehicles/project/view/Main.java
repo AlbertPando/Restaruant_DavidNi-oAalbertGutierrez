@@ -10,20 +10,21 @@ public class Main {
 
 
     public static void main(String[] args) throws Exception {
-            int restaurantId = createRestaurant();
+            String restaurantId = createRestaurant();
             askToAddInRestaurant(restaurantId);
     }
 
-    private static int createRestaurant() throws Exception {
+    private static String createRestaurant() throws Exception {
 
         String nameRestaurant = askRestaurantName();
         return new Controller().createRestaurant(nameRestaurant);
     }
 
-    private static void addPeople(int id) throws Exception{
+
+    private static void addPeople(String id) throws Exception{
         new Controller().addPeopleInRestaurant(id,askNumPeople());
     }
-    private static void askToAddInRestaurant ( int id) {
+    private static void askToAddInRestaurant ( String id) {
         char ask = askYesOrNot();
         while (ask == ConstantsUtilities.YES){
             try {
