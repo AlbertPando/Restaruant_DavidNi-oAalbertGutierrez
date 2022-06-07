@@ -19,4 +19,5 @@ public class Controller {
         System.out.println("Left " + restaurant.addPeopleInRestaurant(numPeople) + " people to add");
     }
 
+
 }

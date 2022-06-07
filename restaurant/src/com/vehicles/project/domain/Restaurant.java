@@ -47,6 +47,7 @@ public class Restaurant {
         Restaurant that = (Restaurant) o;
         return id == that.id;
     }
+
     private void addPeopleGroup(int numberOfPeople) throws Exception {
         int numOfTables, actualPeople, totalPeople = numberOfPeople;
         if (totalPeople > MAX_CAPACITY_IN_TABLE){
@@ -68,7 +69,6 @@ public class Restaurant {
         }
     }
 
-
     private void putPeopleOnTables(int numberOfPeople) throws Exception {
         for (int i = 0; i < this.tables.length; i++){
             if (this.tables[i] == null){
@@ -77,6 +77,15 @@ public class Restaurant {
             }
         }
         throw new Exception("There is no more tables free.");
+    }
+
+    public void deleteTable (int tableNum) throws Exception {
+        if (tableNum > 4)
+            throw new Exception("There is only 4 tables in our restaurant.");
+        else if (this.tables[tableNum - 1] == null)
+            throw new Exception("This table is alredy empty.");
+
+        this.tables[tableNum - 1] = null;
     }
 
     public void printAllGroups(){

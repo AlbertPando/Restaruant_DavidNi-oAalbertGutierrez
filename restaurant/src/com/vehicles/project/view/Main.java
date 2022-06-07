@@ -13,13 +13,11 @@ public class Main {
             String restaurantId = createRestaurant();
             askToAddInRestaurant(restaurantId);
     }
-
     private static String createRestaurant() throws Exception {
 
         String nameRestaurant = askRestaurantName();
         return new Controller().createRestaurant(nameRestaurant);
     }
-
 
     private static void addPeople(String id) throws Exception{
         new Controller().addPeopleInRestaurant(id,askNumPeople());
