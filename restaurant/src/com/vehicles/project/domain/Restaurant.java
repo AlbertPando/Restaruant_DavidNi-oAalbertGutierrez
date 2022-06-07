@@ -92,4 +92,6 @@ public class Restaurant {
         for (int i = 0; i < this.tables.length; i++)
             System.out.println("Table " + (i + 1) + ": " + this.tables[i].getNumberOfPeople() + " people.");
     }
+
+
 }

@@ -12,7 +12,11 @@ public class Main {
     public static void main(String[] args) throws Exception {
             String restaurantId = createRestaurant();
             askToAddInRestaurant(restaurantId);
+            askToDeleteInRestaurant(restaurantId);
     }
+
+
+
     private static String createRestaurant() throws Exception {
 
         String nameRestaurant = askRestaurantName();
@@ -35,6 +39,13 @@ public class Main {
         }
     }
 
+    private static void askToDeleteInRestaurant(String restaurantId) throws Exception {
+        System.out.println("You want to delete a table in the restaurant? (y or n)");
+       if(Keyboard.readChar() == ConstantsUtilities.YES){
+           new Controller().deleteTableInRestaurant(restaurantId,askNumTable());
+       }
+    }
+
     private static char askYesOrNot (){
         System.out.println("You want to add more people in the restaurant? (y or n)");
         return Keyboard.readChar();
@@ -47,6 +58,10 @@ public class Main {
 
     public static int askNumPeople() {
         System.out.println("How many people for the reservation? ");
+        return Keyboard.readInt();
+    }
+    public static int askNumTable() {
+        System.out.println("What table you want delete? ");
         return Keyboard.readInt();
     }
 
